@@ -99,8 +99,9 @@ INSERT INTO shopping_cart ( id_customer, number_items ) VALUES ( 4, 2 );
 -- Make a trigger: when a customer checks out, the item 
 -- counter is set to 0 in the shopping_cart table
 -- and are deleted from this table
-INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 1, 1 );
-INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 1, 2 );
-INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 1, 3 );
-INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 3, 4 );
-INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 4, 5 );
+INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 5, 1 );
+INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 5, 2 );
+INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 5, 3 );
+INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 7, 4 );
+INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 8, 5 );
+INSERT INTO shopping_cart_items ( id_shopping_cart, id_item ) VALUES ( 8, 2 );
