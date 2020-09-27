@@ -1,4 +1,4 @@
--- CREATE DATABASE store ENCODING UTF8;
+-- CREATE DATABASE store ENCODING TF8;
 
 CREATE TYPE PERSON_GENDER AS ENUM (
     'Male',
@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS inventory (
 CREATE TABLE IF NOT EXISTS item (
     id SMALLSERIAL PRIMARY KEY,
     name VARCHAR(300) NOT NULL,
+    brand VARCHAR(100) NOT NULL,
     price NUMERIC(10, 2) NOT NULL,
     CONSTRAINT valid_name CHECK (name <> ''),
     CONSTRAINT valid_price CHECK (price > 0)
@@ -49,9 +50,9 @@ CREATE TABLE IF NOT EXISTS category (
 );
 
 CREATE TABLE IF NOT EXISTS is_category (
-    id SMALLSERIAL PRIMARY KEY, 
     id_item INTEGER REFERENCES item (id),
-    id_category INTEGER REFERENCES category (id)
+    id_category INTEGER REFERENCES category (id),
+    PRIMARY KEY (id_item, id_category)
 );
 
 CREATE TABLE IF NOT EXISTS customer (
@@ -70,12 +71,12 @@ CREATE TABLE IF NOT EXISTS payment (
     id SMALLSERIAL PRIMARY KEY, 
     id_customer INTEGER REFERENCES customer (id),
     method VARCHAR(50) NOT NULL,
-    card_number VARCHAR(50) NOT NULL
+    card_number VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS shopping_cart (
     id SMALLSERIAL PRIMARY KEY,
-    id_customer INTEGER REFERENCES customer (id),
+    id_customer INTEGER REFERENCES customer (id) UNIQUE,
     number_items INTEGER NOT NULL,
     CONSTRAINT valid_number_items CHECK (number_items > 0)
 );
